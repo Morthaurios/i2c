@@ -37,15 +37,18 @@ static inline uint8_t CalculateAddress(const uint8_t u8Address, const bool bRW);
 /*****************************************************************************************************************************
  * FUNCTION DEFINITIONS
  *****************************************************************************************************************************/
-void I2C_Init(void)
+Platform_Return_t I2C_Init(void)
 {
     /* Set some registers. */
 
     bInitialized = true;
+
+    return E_OK;
 }
 
-void I2C_Transmit(const uint8_t u8Address, const uint8_t * const pu8Buffer, const uint16_t u16BufferLength)
+Platform_Return_t I2C_Transmit(const uint8_t u8Address, const uint8_t * const pu8Buffer, const uint16_t u16BufferLength)
 {
+    Platform_Return_t eRetVal = E_NOT_OK;
     uint16_t u16Index;
 
     if(true == bInitialized)
@@ -59,12 +62,17 @@ void I2C_Transmit(const uint8_t u8Address, const uint8_t * const pu8Buffer, cons
 
             /* Wait until byte is clocked out. */
         }
+
+        eRetVal = E_OK;
     }
+
+    return eRetVal;
 }
 
-void I2C_Receive(const uint8_t u8Address, uint8_t * const pu8Buffer, const uint16_t u16BufferLength)
+Platform_Return_t I2C_Receive(const uint8_t u8Address, uint8_t * const pu8Buffer, const uint16_t u16BufferLength)
 {
     uint16_t u16Index;
+    Platform_Return_t eRetVal = E_NOT_OK;
 
     if(true == bInitialized)
     {
@@ -77,7 +85,11 @@ void I2C_Receive(const uint8_t u8Address, uint8_t * const pu8Buffer, const uint1
 
             /* Wait until byte is clocked out. */
         }
+
+        eRetVal = E_OK;
     }
+
+    return eRetVal;
 }
 
 static inline uint8_t CalculateAddress(const uint8_t u8Address, const bool bRW)

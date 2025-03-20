@@ -1,11 +1,12 @@
-/*****************************************************************************************************************************
- * INCLUDES
- *****************************************************************************************************************************/
-#include <stdint.h>
-#include <stdbool.h>
 
 #ifndef I2C_H_
 #define I2C_H_
+
+/*****************************************************************************************************************************
+ * INCLUDES
+ *****************************************************************************************************************************/
+
+#include "Platform_Types.h"
 
 /*****************************************************************************************************************************
  * MACROS
@@ -26,8 +27,8 @@
  * FUNCTION DECLARATIONS
  *****************************************************************************************************************************/
 
-extern void I2C_Init(void);
-extern void I2C_Transmit(const uint8_t u8Address, const uint8_t * const pu8Buffer, const uint16_t u16BufferLength);
-extern void I2C_Receive(const uint8_t u8Address, uint8_t * const pu8Buffer, const uint16_t u16BufferLength);
+extern Platform_Return_t I2C_Init(void);
+extern Platform_Return_t I2C_Transmit(const uint8_t u8Address, const uint8_t * const pu8Buffer, const uint16_t u16BufferLength);
+extern Platform_Return_t I2C_Receive(const uint8_t u8Address, uint8_t * const pu8Buffer, const uint16_t u16BufferLength);
 
 #endif /* I2C_H_ */

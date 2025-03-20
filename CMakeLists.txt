@@ -14,3 +14,7 @@ target_sources( I2C_driver PRIVATE
 target_include_directories( I2C_driver PUBLIC
     .
 )
+
+target_link_libraries( I2C_driver PRIVATE
+    Platform_Types
+)
