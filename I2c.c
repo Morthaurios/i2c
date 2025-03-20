@@ -43,7 +43,15 @@ static inline uint8_t CalculateAddress(const uint8_t u8Address, const bool bRW);
 /*****************************************************************************************************************************
  * FUNCTION DEFINITIONS
  *****************************************************************************************************************************/
-Platform_Return_t I2C_Init(void)
+
+/*****************************************************************************************************************************
+ * FUNCTION:        I2C_Init
+ * DESCRIPTION:     TBD
+ * INPUT:           TBD
+ * OUTPUT:          TBD
+ * RETURN:          TBD
+ *****************************************************************************************************************************/
+ Platform_Return_t I2C_Init(void)
 {
     /* Set some registers. */
 
@@ -52,6 +60,13 @@ Platform_Return_t I2C_Init(void)
     return E_OK;
 }
 
+/*****************************************************************************************************************************
+ * FUNCTION:        I2C_Transmit
+ * DESCRIPTION:     TBD
+ * INPUT:           TBD
+ * OUTPUT:          TBD
+ * RETURN:          TBD
+ *****************************************************************************************************************************/
 Platform_Return_t I2C_Transmit(const uint8_t u8Address, const uint8_t * const pu8Buffer, const uint16_t u16BufferLength)
 {
     Platform_Return_t eRetVal = E_NOT_OK;
@@ -78,6 +93,13 @@ Platform_Return_t I2C_Transmit(const uint8_t u8Address, const uint8_t * const pu
     return eRetVal;
 }
 
+/*****************************************************************************************************************************
+ * FUNCTION:        I2C_Receive
+ * DESCRIPTION:     TBD
+ * INPUT:           TBD
+ * OUTPUT:          TBD
+ * RETURN:          TBD
+ *****************************************************************************************************************************/
 Platform_Return_t I2C_Receive(const uint8_t u8Address, uint8_t * const pu8Buffer, const uint16_t u16BufferLength)
 {
     uint16_t u16Index;
@@ -104,6 +126,13 @@ Platform_Return_t I2C_Receive(const uint8_t u8Address, uint8_t * const pu8Buffer
     return eRetVal;
 }
 
+/*****************************************************************************************************************************
+ * FUNCTION:        CalculateAddress
+ * DESCRIPTION:     TBD
+ * INPUT:           TBD
+ * OUTPUT:          TBD
+ * RETURN:          TBD
+ *****************************************************************************************************************************/
 static inline uint8_t CalculateAddress(const uint8_t u8Address, const bool bRW)
 {
     uint8_t u8ShiftedAddress;
