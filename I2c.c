@@ -1,5 +1,11 @@
 
 /*****************************************************************************************************************************
+ * FILE NAME:   I2c.c
+ * AUTHOR:      morthaurios
+ * DESCRIPTION: Dummy I2C driver.
+ *****************************************************************************************************************************/
+
+/*****************************************************************************************************************************
  * INCLUDES
  *****************************************************************************************************************************/
 
@@ -51,19 +57,22 @@ Platform_Return_t I2C_Transmit(const uint8_t u8Address, const uint8_t * const pu
     Platform_Return_t eRetVal = E_NOT_OK;
     uint16_t u16Index;
 
-    if(true == bInitialized)
+    if( (NULL != pu8Buffer) && (u16BufferLength > 0U) )
     {
-        u8DummyTxRegister = CalculateAddress(u8Address, false);
-
-        for(u16Index = 0U; u16Index < u16BufferLength; u16Index++)
+        if(true == bInitialized)
         {
-            /* Write to some register. */
-            u8DummyTxRegister = pu8Buffer[u16Index];
+            u8DummyTxRegister = CalculateAddress(u8Address, false);
 
-            /* Wait until byte is clocked out. */
+            for(u16Index = 0U; u16Index < u16BufferLength; u16Index++)
+            {
+                /* Write to some register. */
+                u8DummyTxRegister = pu8Buffer[u16Index];
+
+                /* Wait until byte is clocked out. */
+            }
+
+            eRetVal = E_OK;
         }
-
-        eRetVal = E_OK;
     }
 
     return eRetVal;
@@ -74,19 +83,22 @@ Platform_Return_t I2C_Receive(const uint8_t u8Address, uint8_t * const pu8Buffer
     uint16_t u16Index;
     Platform_Return_t eRetVal = E_NOT_OK;
 
-    if(true == bInitialized)
+    if( (NULL != pu8Buffer) && (u16BufferLength > 0U) )
     {
-        u8DummyTxRegister = CalculateAddress(u8Address, true);
-
-        for(u16Index = 0U; u16Index < u16BufferLength; u16Index++)
+        if(true == bInitialized)
         {
-            /* Write to some register. */
-            pu8Buffer[u16Index] = u8DummyRxRegister;
+            u8DummyTxRegister = CalculateAddress(u8Address, true);
 
-            /* Wait until byte is clocked out. */
+            for(u16Index = 0U; u16Index < u16BufferLength; u16Index++)
+            {
+                /* Write to some register. */
+                pu8Buffer[u16Index] = u8DummyRxRegister;
+
+                /* Wait until byte is clocked out. */
+            }
+
+            eRetVal = E_OK;
         }
-
-        eRetVal = E_OK;
     }
 
     return eRetVal;
