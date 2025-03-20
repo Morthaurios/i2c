@@ -18,3 +18,5 @@ target_include_directories( I2C_driver PUBLIC
 target_link_libraries( I2C_driver PRIVATE
     Platform_Types
 )
+
+add_subdirectory(test)
